@@ -1,21 +1,14 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+import globals from "globals";
+import pluginJs from "@eslint/js";
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      sourceType: "commonjs", // CommonJS modules
+      globals: globals.node, // Add Node.js globals (e.g., `process`, `require`)
     },
-    "ecmaVersion": 12,
-    "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
-  "rules": {}
-}
+  pluginJs.configs.recommended, // Recommended rules from @eslint/js
+];
